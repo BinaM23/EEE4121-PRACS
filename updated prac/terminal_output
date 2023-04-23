@@ -1,0 +1,1646 @@
+eee4121f@eee4121f-VirtualBox:~$ cd lab1/
+eee4121f@eee4121f-VirtualBox:~/lab1$ ls
+ eee4121f-b-lab1-tcp  'results v3'  'Results v4'
+eee4121f@eee4121f-VirtualBox:~/lab1$ cd eee4121f-b-lab1-tcp/
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ ls
+helper.py   monitor.py        plot_defaults.pyc  README     tcp.py
+helper.pyc  monitor.pyc       plot_ping.py       README.md  tcp.py~
+http        outputs           plot_queue.py      Run.sh
+index.html  plot_defaults.py  plot_tcpprobe.py   Run.sh~
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+[sudo] password for eee4121f: 
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+13.3s left...
+mean fetch time: 2.8130045
+Standard deviation: 0.0879668333333
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+3.2s left...
+mean fetch time: 5.820455
+Standard deviation: 1.379364
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+9.3s left...
+mean fetch time: 3.76820533333
+Standard deviation: 1.04454966667
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 11.2999593333
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 9.83437633333
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+5.2s left...
+mean fetch time: 5.8329215
+Standard deviation: 0.3607245
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+14.7s left...
+0.5s left...
+mean fetch time: 3.68382011111
+Standard deviation: 0.679760696532
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 9.968032
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+16.5s left...
+3.3s left...
+mean fetch time: 4.18633311111
+Standard deviation: 2.04437864902
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 10.5847056667
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 10.9545573333
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 9.49071666667
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 10.8634486667
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+9.0s left...
+mean fetch time: 4.3818755
+Standard deviation: 0.686600166667
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 11.4979013333
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+17.4s left...
+4.5s left...
+mean fetch time: 3.04573933333
+Standard deviation: 0.688231610937
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 8.86455933333
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 10.9297553333
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+17.3s left...
+4.3s left...
+mean fetch time: 3.38446277778
+Standard deviation: 1.10696640046
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+17.5s left...
+4.5s left...
+mean fetch time: 3.69093744444
+Standard deviation: 1.60103770492
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 9.37314866667
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 10.9118356667
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+17.3s left...
+4.3s left...
+mean fetch time: 3.332214
+Standard deviation: 1.05219823596
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 9.996835
+Standard deviation: 0.0
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+13.6s left...
+mean fetch time: 2.65365716667 s
+Standard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 msStandard deviation: 0.195122166667 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+5.5s left...
+mean fetch time: 5.5423535 s
+Standard deviation: 483.823166667 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+14.7s left...
+mean fetch time: 3.44516166667 s
+Standard deviation: 45.1406666667 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+4.2s left...
+mean fetch time: 6.15190233333 s
+Standard deviation: 748.990333333 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 9.61732833333 s
+Standard deviation: 0.0 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+16.5s left...
+2.4s left...
+mean fetch time: 2.57479966667 s
+Standard deviation: 498.651703054 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+18.8s left...
+mean fetch time: 3.343441 s
+Standard deviation: 1296.761 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+11.1s left...
+mean fetch time: 3.57210266667 s
+Standard deviation: 1033.38366667 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+16.2s left...
+mean fetch time: 3.48045283333 s
+Standard deviation: 587.2135 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 10.0094536667 s
+Standard deviation: 0.0 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+13.6s left...
+0.1s left...
+mean fetch time: 3.889059 s
+Standard deviation: 918.368160181 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+mean fetch time: 9.51405033333 s
+Standard deviation: 0.0 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+8.9s left...
+mean fetch time: 5.14901283333 s
+Standard deviation: 179.6815 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+15.1s left...
+mean fetch time: 3.4756175 s
+Standard deviation: 181.773166667 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+7.1s left...
+mean fetch time: 5.60989466667 s
+Standard deviation: 349.606666667 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+10.8s left...
+mean fetch time: 3.98940983333 s
+Standard deviation: 708.0935 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+20.5s left...
+9.7s left...
+mean fetch time: 1.668812 s
+Standard deviation: 187.411245153 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+13.6s left...
+2.5s left...
+mean fetch time: 2.51260933333 s
+Standard deviation: 895.857660124 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+8.4s left...
+mean fetch time: 5.55570716667 s
+Standard deviation: 23.9078333333 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+8.7s left...
+mean fetch time: 5.69708333333 s
+Standard deviation: 270.486 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+15.4s left...
+mean fetch time: 3.77424216667 s
+Standard deviation: 592.946833333 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+13.1s left...
+mean fetch time: 4.806921 s
+Standard deviation: 854.127666667 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+20.9s left...
+11.0s left...
+mean fetch time: 1.78135711111 s
+Standard deviation: 435.839676633 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+22.0s left...
+13.6s left...
+5.3s left...
+mean fetch time: 1.05046625 s
+Standard deviation: 54.3840279332 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+20.9s left...
+11.0s left...
+mean fetch time: 1.86506077778 s
+Standard deviation: 565.888798641 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+21.0s left...
+10.6s left...
+mean fetch time: 1.69212155556 s
+Standard deviation: 301.985198784 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+20.5s left...
+9.4s left...
+mean fetch time: 1.82056944444 s
+Standard deviation: 244.519633455 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+20.2s left...
+9.5s left...
+mean fetch time: 1.81481388889 s
+Standard deviation: 163.463038292 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+20.5s left...
+9.9s left...
+mean fetch time: 1.80039722222 s
+Standard deviation: 232.657447886 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+20.9s left...
+11.3s left...
+2.0s left...
+mean fetch time: 1.42160258333 s
+Standard deviation: 76.4145776193 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+20.8s left...
+11.5s left...
+2.0s left...
+mean fetch time: 1.42071 s
+Standard deviation: 43.8665024623 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+20.9s left...
+11.4s left...
+0.4s left...
+mean fetch time: 1.51592125 s
+Standard deviation: 279.712307408 ms
+cat: no process found
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ 
+
