@@ -8,9 +8,10 @@ Before running the experiments, create a folder to store the resulting .txt file
 
 ## Experiments setup
 Assuming output directory has been created:
-
+if you haven't already run `sudo chmod +x *.py` to make all pyhton files executible
+run `sudo chmod +x Run.sh` to make the `Run.sh` file executible
 run the command `sudo mn -c` to clear the network before running each experiment on the terminal.
-To run an experiment run the command `sudo ./Run.sh` on the terminal.
+To run an experiment run the command `sudo ./Run.sh` on the terminal. Then provide password for that VM if prompted
 
 ## Experiments
 The default congestion control used is TCP reno, to use TCP BBR or TCP Cubic, change the name of the congestion control in the `cong` variable in the `Run.sh` file to either `cong="bbr"` or `cong="cubic"` to use the other congestion controls.
