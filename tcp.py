@@ -164,8 +164,8 @@ def start_ping(net):
     
     h1=net.get('h1')
     h2=net.get('h2') #local variables have to fetch each time
-    #ping_train=h1.popen("ping -c %s -i 0.1 %s > %s/ping.txt" % (args.time,h2.IP(), args.dir), shell=True)  #args.time*10?, is count optional
-    ping_train=h1.popen("ping -i 0.1 %s > %s/ping.txt" % (h2.IP(), args.dir), shell=True)
+    ping_train=h1.popen("ping -c %s -i 0.1 %s > %s/ping.txt" % ((args.time)*10,h2.IP(), args.dir), shell=True)  #args.time*10?, is count optional
+    #ping_train=h1.popen("ping -i 0.1 %s > %s/ping.txt" % (h2.IP(), args.dir), shell=True)
     
     
     
