@@ -29,9 +29,11 @@ In the `Run.sh` file ensure the variable `bwHost` is equal to 1000 and `maxq` is
 
 3. view the plots using any image viewer such as fim e.g. `fim ping.png` and view .txt files using any text editor e.g. `joe q.txt`
 
-4. move results if necessary then repeat steps 0 to 3 using a different congestion control
+4. move results to different directory if necessary then repeat steps 0 to 3 using a different congestion control
 
-NB: the average fetch time and standard deviation are shown on the terminal after the program is run, the times are in seconds(s)
+NB: the average fetch time and standard deviation are shown on the terminal after the program is run, the mean times are in seconds(s) and (ms) for standard deviation
+
+NB: Run each experiment at least 3 times to account for cache warming, discard first set of results then use any of the subsequent results
 
 NB: running the `Run.sh` file repeatedly will overwrite whatever results are in the output directory. Therefore ensure the results of each experiment are stored separately or move output to a different directory before doing another experiment.
 
