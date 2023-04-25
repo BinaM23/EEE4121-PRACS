@@ -1,0 +1,1238 @@
+eee4121f@eee4121f-VirtualBox:~$ ls
+behavioral-model  lab1      p4-guide  solutions
+DEADJOE           log.txt   PI        Templates
+Desktop           mininet   Pictures  usr-local-1-before-protobuf.txt
+Documents         Music     pox       usr-local-2-after-protobuf.txt
+Downloads         oflops    protobuf  usr-local-3-after-grpc.txt
+examples.desktop  oftest    Public    usr-local-4-after-PI.txt
+grpc              openflow  snap      Videos
+eee4121f@eee4121f-VirtualBox:~$ cd lab1/
+eee4121f@eee4121f-VirtualBox:~/lab1$ ls
+ eee4121f-b-lab1-tcp  'results v3'  'Results v4'  'updated prac'
+eee4121f@eee4121f-VirtualBox:~/lab1$ cd eee4121f-b-lab1-tcp/
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ ls
+helper.py   monitor.pyc       plot_defaults.pyc  queue.png  tcp.py
+helper.pyc  outputs           plot_ping.py       README     tcp.py~
+http        ping.png          plot_queue.py      README.md
+index.html  ping.txt          plot_tcpprobe.py   Run.sh
+monitor.py  plot_defaults.py  q.txt              Run.sh~
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+[sudo] password for eee4121f: 
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+Traceback (most recent call last):
+  File "tcp.py", line 290, in <module>
+    tcp()
+  File "tcp.py", line 247, in tcp
+    fecthpckt(net,h1,h2) #for loop repeats on terminal rather than in python so no delay due to invoking python loop
+  File "tcp.py", line 174, in fecthpckt
+    duration=float(time.stdout.read()) #read back time form stdout
+ValueError: could not convert string to float: 
+^CProcess Process-2:
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+Traceback (most recent call last):
+Process Process-1:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+    func(*targs, **kargs)
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 328, in _exit_function
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/eee4121f/lab1/eee4121f-b-lab1-tcp/monitor.py", line 21, in monitor_qlen
+    sleep(interval_sec)
+KeyboardInterrupt
+    p.join()
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 148, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+  File "tcp.py", line 142, in start_iperf
+    h1.cmd("iperf -c %s -t %s" % (h2.IP(),args.time))
+  File "build/bdist.linux-x86_64/egg/mininet/node.py", line 374, in cmd
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+Error in sys.exitfunc:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 328, in _exit_function
+    p.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 148, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+    return self.waitOutput( verbose )
+  File "build/bdist.linux-x86_64/egg/mininet/node.py", line 361, in waitOutput
+    data = self.monitor( findPid=findPid )
+  File "build/bdist.linux-x86_64/egg/mininet/node.py", line 328, in monitor
+    data = self.read( 1024 )
+  File "build/bdist.linux-x86_64/egg/mininet/node.py", line 237, in read
+    data = decode( os.read( self.stdout.fileno(), maxbytes - count ) )
+KeyboardInterrupt
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ joe somefile.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^K  IW   somefile.txt (Modified)                               Row 8    Col 31  
+#stddev=0
+    #tot=0
+    #for t in times:
+    #    tot+=(t-mymean)**2
+    #stddev=math.sqrt(tot/len(times))
+    #squaredDiff=[(val - mymean)** 2 for val in times]
+    # msqdiff=sum(squaredDiff)/len(squaredDiff)
+    #stddev=math.sqrt(msqdiff)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+File somefile.txt saved
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+Traceback (most recent call last):
+  File "tcp.py", line 284, in <module>
+    tcp()
+  File "tcp.py", line 201, in tcp
+    net = Mininet(topo=topo, host=CPULimitedHost, link=TCLink)
+  File "build/bdist.linux-x86_64/egg/mininet/net.py", line 174, in __init__
+  File "build/bdist.linux-x86_64/egg/mininet/net.py", line 502, in build
+  File "build/bdist.linux-x86_64/egg/mininet/net.py", line 469, in buildFromTopo
+  File "build/bdist.linux-x86_64/egg/mininet/net.py", line 285, in addController
+  File "build/bdist.linux-x86_64/egg/mininet/node.py", line 1574, in DefaultController
+  File "build/bdist.linux-x86_64/egg/mininet/node.py", line 1396, in __init__
+  File "build/bdist.linux-x86_64/egg/mininet/node.py", line 1414, in checkListening
+Exception: Please shut down the controller which is running on port 6653:
+Active Internet connections (servers and established)
+tcp        0      0 0.0.0.0:6653            0.0.0.0:*               LISTEN      2522/controller     
+tcp        0      0 127.0.0.1:60900         127.0.0.1:6653          ESTABLISHED 1018/ovs-vswitchd   
+tcp        0      0 127.0.0.1:52196         127.0.0.1:6653          TIME_WAIT   -                   
+tcp        0      0 127.0.0.1:6653          127.0.0.1:60900         ESTABLISHED 2522/controller     
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --if-exists del-br s0
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+( ip link del s0-eth1;ip link del s0-eth2 ) 2> /dev/null
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 0 s
+Standard deviation: 0 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 0 s
+Standard deviation: 0 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 0 s
+Standard deviation: 0 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+Traceback (most recent call last):
+  File "tcp.py", line 289, in <module>
+    tcp()
+  File "tcp.py", line 264, in tcp
+    times=stats()
+  File "tcp.py", line 183, in stats
+    data=f.read.strip.split("\n")
+AttributeError: 'builtin_function_or_method' object has no attribute 'strip'
+^CError in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+Process Process-1:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/eee4121f/lab1/eee4121f-b-lab1-tcp/monitor.py", line 21, in monitor_qlen
+    sleep(interval_sec)
+KeyboardInterrupt
+    func(*targs, **kargs)
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 328, in _exit_function
+    p.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 148, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+Error in sys.exitfunc:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 328, in _exit_function
+    p.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 148, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --if-exists del-br s0
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+( ip link del s0-eth1;ip link del s0-eth2 ) 2> /dev/null
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+Traceback (most recent call last):
+  File "tcp.py", line 289, in <module>
+    tcp()
+  File "tcp.py", line 264, in tcp
+    times=stats()
+  File "tcp.py", line 183, in stats
+    data=f.read.strip().split("\n")
+AttributeError: 'builtin_function_or_method' object has no attribute 'strip'
+^[[A^[[A^CError in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+Process Process-1:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 328, in _exit_function
+    p.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 148, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/home/eee4121f/lab1/eee4121f-b-lab1-tcp/monitor.py", line 21, in monitor_qlen
+    sleep(interval_sec)
+KeyboardInterrupt
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+Error in sys.exitfunc:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 328, in _exit_function
+    p.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 148, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --if-exists del-br s0
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+( ip link del s0-eth1;ip link del s0-eth2 ) 2> /dev/null
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+Traceback (most recent call last):
+  File "tcp.py", line 289, in <module>
+    tcp()
+  File "tcp.py", line 264, in tcp
+    times=stats()
+  File "tcp.py", line 183, in stats
+    data=f.read.split("\n") #.strip()
+AttributeError: 'builtin_function_or_method' object has no attribute 'split'
+^[[A^CError in atexit._run_exitfuncs:Process Process-1:
+
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 328, in _exit_function
+    p.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 148, in join
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    res = self._popen.wait(timeout)
+    self._target(*self._args, **self._kwargs)
+  File "/home/eee4121f/lab1/eee4121f-b-lab1-tcp/monitor.py", line 21, in monitor_qlen
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+    sleep(interval_sec)
+KeyboardInterrupt
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+Error in sys.exitfunc:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 328, in _exit_function
+    p.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 148, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --if-exists del-br s0
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+( ip link del s0-eth1;ip link del s0-eth2 ) 2> /dev/null
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+Traceback (most recent call last):
+  File "tcp.py", line 289, in <module>
+    tcp()
+  File "tcp.py", line 264, in tcp
+    times=stats()
+  File "tcp.py", line 185, in stats
+    arr=[float(line.strip()) for line in data] #.strip())
+ValueError: invalid literal for float(): 0.0000000.0000000.0000000.0000000.000000613.978741
+^CError in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 328, in _exit_function
+    p.join()
+Process Process-1:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 267, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 148, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/eee4121f/lab1/eee4121f-b-lab1-tcp/monitor.py", line 21, in monitor_qlen
+    sleep(interval_sec)
+KeyboardInterrupt
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+Error in sys.exitfunc:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib/python2.7/multiprocessing/util.py", line 328, in _exit_function
+    p.join()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 148, in join
+    res = self._popen.wait(timeout)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 154, in wait
+    return self.poll(0)
+  File "/usr/lib/python2.7/multiprocessing/forking.py", line 135, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --if-exists del-br s0
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+( ip link del s0-eth1;ip link del s0-eth2 ) 2> /dev/null
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 12.5223916667 s
+Standard deviation: 2661.21515401 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 2.917644875 s
+Standard deviation: 577.167911692 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 13.438472 s
+Standard deviation: 2293.42594565 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 9.93122557143 s
+Standard deviation: 2290.3254811 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 2.82317725 s
+Standard deviation: 535.784186068 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 2.696389 s
+Standard deviation: 590.897167571 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 2.26941473684 s
+Standard deviation: 1349.15845034 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 7.07730275 s
+Standard deviation: 8312.23177379 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 5.8514806 s
+Standard deviation: 6036.13157167 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 2.6238125 s
+Standard deviation: 1618.1628599 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 1.43155888889 s
+Standard deviation: 85.7766629036 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 2.47719588235 s
+Standard deviation: 650.951443953 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = reno
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+14.9s left...
+9.9s left...
+4.9s left...
+mean fetch time: 3.73786664286 s
+Standard deviation: 1353.46585879 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = cubic
+net.core.default_qdisc = pfifo_fast
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 1.41714523529 s
+Standard deviation: 327.957286471 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 1.150128 s
+Standard deviation: 275.121157514 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo mn -c
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ sudo ./Run.sh 
+Start of experiment...
+net.ipv4.tcp_congestion_control = bbr
+net.core.default_qdisc = fq
+h1 h1-eth0:s0-eth1
+h2 h2-eth0:s0-eth2
+*** Ping: testing ping reachability
+h1 -> h2 
+h2 -> h1 
+*** Results: 0% dropped (2/2 received)
+Starting iperf server...
+25.0s left...
+20.0s left...
+15.0s left...
+10.0s left...
+5.0s left...
+mean fetch time: 1.975679 s
+Standard deviation: 1192.67792904 ms
+Done
+starting plots...
+saving to outputs/queue.png
+queue plot done, starting ping plot...
+Done, results available in directory:outputs
+eee4121f@eee4121f-VirtualBox:~/lab1/eee4121f-b-lab1-tcp$ 
+
